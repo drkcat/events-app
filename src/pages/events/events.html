@@ -1,0 +1,37 @@
+<!--
+  Generated template for the EventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Events</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="filterEvents($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let event of events" (click)="viewDetails(event.id)">
+    <img [src]="event.cover"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ event.name}}
+      </ion-card-title>
+      <div class="card-subtitle" padding>
+        {{ event?.location.venue }}, {{ event?.location.locality }}, {{ event?.location.country }} <small>{{ event.schedule[0].start | date }}</small>
+      </div>
+      <p>
+        {{ event.description }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
